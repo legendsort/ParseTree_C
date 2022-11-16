@@ -35,8 +35,8 @@ class Parser
         Node* ifstat(int level);
         Node* loop(int level);
         Node* assign(int level);
-        Node* O(int level);
-        bool is_O_token(Token token);
+        Node* RO(int level);
+        bool is_RO_token(Token token);
         void print_error_and_exit();
         void check_for_semicolon_token();
 };

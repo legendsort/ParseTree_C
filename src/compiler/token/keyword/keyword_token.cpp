@@ -2,16 +2,17 @@
 
 const std::string START = "begin";
 const std::string END = "end";
-const std::string ITER = "iter";
+const std::string LOOP = "loop";
 const std::string VOID = "void";
 const std::string VAR = "var";
 const std::string RETURN = "return";
 const std::string READ = "scan";
 const std::string PRINT = "print";
 const std::string PROGRAM = "program";
-const std::string IF = "if";
+const std::string IF = "fork";
 const std::string THEN = "then";
 const std::string LET = "let";
+
 
 #include <bits/stdc++.h>
 
@@ -37,7 +38,7 @@ bool KeywordToken::is_end_token(Token token)
 
 bool KeywordToken::is_iter_token(Token token)
 {
-    KeywordToken iter_token = KeywordToken(ITER);
+    KeywordToken iter_token = KeywordToken(LOOP);
     return token == iter_token;
 }
 
@@ -104,7 +105,7 @@ KeywordToken::KeywordToken(std::string value)
 std::set<std::string> KeywordToken::keywords = {
     START,
     END,
-    ITER,
+    LOOP,
     VOID,
     VAR,
     RETURN,

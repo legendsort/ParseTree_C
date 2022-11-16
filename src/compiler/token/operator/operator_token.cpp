@@ -17,6 +17,10 @@ const string EQUALS = ":";
 const string ENDLINE = ";";
 const string PLUS = "+";
 const string MINUS = "-";
+const string LESS = "<";
+const string BIG = ">";
+const string PRO = "%";
+const string EQ = "=";
 
 bool OperatorToken::is_operator(string character)
 {
@@ -83,6 +87,19 @@ bool OperatorToken::is_endline_token(Token token)
     return token == endline_token;
 }
 
+bool OperatorToken::is_pro_token(Token token)
+{
+    Token pro_token = OperatorToken(PRO);
+    return token == pro_token;
+}
+
+bool OperatorToken::is_eq_token(Token token)
+{
+    Token eq_token = OperatorToken(EQ);
+    return token == eq_token;
+}
+
+
 
 OperatorToken::OperatorToken(std::string value, int line_number)
 : Token(OperatorTokenId, value, line_number) {}
@@ -102,5 +119,9 @@ std::set<string> OperatorToken::operators = {
     ENDLINE,
     MULTIPLY,
     PLUS,
-    MINUS
+    MINUS,
+    PRO,
+    LESS,
+    BIG,
+    EQ
 };

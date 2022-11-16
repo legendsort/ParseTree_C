@@ -19,6 +19,8 @@ class OperatorToken : public Token
         static bool is_equals_token(Token token);
         static bool is_assignment_token(Token token);
         static bool is_endline_token(Token token);
+        static bool is_pro_token(Token token);
+        static bool is_eq_token(Token token);
         OperatorToken(std::string value, int line_number);
         OperatorToken(char value);
         OperatorToken(std::string value);
