@@ -1,0 +1,7 @@
+var x : 1 ;
+begin
+scan x ;
+ loop ( x <= 2 ) 
+ fork ( x >= 1 ) then
+ print ( 1 ) ; ; ;
+end

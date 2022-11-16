@@ -1,0 +1,8 @@
+var x : 1 ;
+begin
+scan x ;
+fork ( x <= 2 ) then
+begin
+ print ( 1 ) ;
+end ;
+end

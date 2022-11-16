@@ -1,0 +1,12 @@
+var x : 1 ;
+var y : 2 ;
+begin
+scan x ;
+begin
+ print ( 1 ) ;
+ begin 
+ print ( 1 ) ;
+ end
+ print (1 ) ;
+end
+end

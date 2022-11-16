@@ -1,4 +1,3 @@
-#ifndef TOKEN_INDEX_H
 #define TOKEN_INDEX_H
 
 #include <string>
@@ -28,5 +27,6 @@ class Token
         friend bool operator!=(const Token&, const Token&);
         friend bool operator<(const Token&, const Token&);
 };
+
 
 #endif
