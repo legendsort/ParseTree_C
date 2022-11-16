@@ -35,9 +35,7 @@ Node* Parser::program()
     int level = 1;
 
     Node* node = Node::of(START, level);
-
     node->append_child(vars(level));
-	
     node->append_child(block(level));
     return node;
 
@@ -71,9 +69,9 @@ Node* Parser::block(int level)
 Node* Parser::vars(int level)
 {
 	
+    level++;
+    Node* node = Node::of(VARS, level);
     if (KeywordToken::is_var_token(token)) {
-        level++;
-        Node* node = Node::of(VARS, level);
         token = scanner->read();
         if (token.is_identifier()) {
             node->append_token(token);
@@ -98,7 +96,7 @@ Node* Parser::vars(int level)
             print_error_and_exit();
         }
     } else {
-        return NULL;
+        return node;
     }
 }
 
@@ -125,7 +123,7 @@ Node* Parser::expr(int level)
 Node* Parser::A(int level)
 {
     level++;
-    Node* node = Node::of(EXPR, level);
+    Node* node = Node::of(A_LETTER, level);
     node->append_child(N(level));
     if (OperatorToken::is_subtraction_token(token)) {
         node->append_token(token);
@@ -142,7 +140,7 @@ Node* Parser::A(int level)
 Node* Parser::N(int level)
 {
     level++;
-    Node* node = Node::of(EXPR, level);
+    Node* node = Node::of(N_LETTER, level);
     node->append_child(M(level));
     
     if (OperatorToken::is_division_token(token)) {
@@ -169,7 +167,7 @@ Node* Parser::N(int level)
 Node* Parser::M(int level)
 {
     level++;
-    Node* node = Node::of(HASH, level);
+    Node* node = Node::of(M_LETTER, level);
     if (OperatorToken::is_negation_token(token)) {
         node->append_token(token);
         token = scanner->read();
@@ -215,7 +213,7 @@ Node* Parser::R(int level)
 Node* Parser::stats(int level)
 {
     level++;
-    Node* node = Node::of(STAT, level);
+    Node* node = Node::of(STATS, level);
     
 	node->append_child(stat(level));
 	node->append_child(mStat(level));
@@ -224,17 +222,17 @@ Node* Parser::stats(int level)
 }
 
 /**
- * <mStat> -> empty | <stats>
+ * <mStat> -> empty | <stats> 
  */
 Node* Parser::mStat(int level)
 {
+    level++;
+    Node* node = Node::of(M_STAT, level);
     if (is_first_of_stats(token)) {
-        level++;
-        Node* node = Node::of(M_STAT, level);
         node->append_child(stats(level));
         return node;
     } else {
-        return NULL;
+        return node;
     }
 }
 

@@ -1,7 +1,0 @@
-var x : 1 ;
-var y : 2 ;
-begin
-  scan x ;
-  print ( x ) ;
-  fork (x = 3) then scan x; ;
-end

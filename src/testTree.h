@@ -1,21 +1,14 @@
-#ifndef BACKEND_H
-#define BACKEND_H
+#ifndef TESTTREE_H
+#define TESTTREE_H
 
 #include <iostream>
 
 #include "node.h"
 
-/**
- * Backend part of compiler responsible for:
- *   - static semantics
- *   - storage allocation
- *   - and code generation
- */
-
-class Backend
+class TestTree
 {
     public:
-        Backend(std::string base_filename);
+        TestTree(); 
         void traverse(Node* node);
 
     private:

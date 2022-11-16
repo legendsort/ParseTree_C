@@ -19,11 +19,13 @@ std::string get_basename(std::string filename)
 void parse(std::string filename)
 {
     Parser parser(filename);
+    
     Node* parse_tree = parser.parse();
 
-//    std::string basename = get_basename(filename);
-//    Backend backend(basename);
-//    backend.traverse(parse_tree);
+    std::string basename = get_basename(filename);
+	std::cout << "Parser Success\n";
+    TestTree testTree;
+    testTree.traverse(parse_tree);
     Node::destroy(parse_tree);
 }
 
@@ -32,8 +34,6 @@ int main(int argc, char** argv)
  
     std::string filename = get_filename(argc, argv);
     parse(filename);
-	
-    std::cout << "OK\n";
 
     return 0;
 }

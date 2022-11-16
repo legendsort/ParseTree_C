@@ -1,0 +1,6 @@
+var x : 1 ;
+begin
+scan x ;
+loop ( x <= 2 ) 
+ print ( 1 ) ;
+end

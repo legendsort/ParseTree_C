@@ -1,6 +1,5 @@
 #include <iostream>
 #include "token.h"
-#include "state_transition_table.h"
 #include <string>
 #include <bits/stdc++.h>
 

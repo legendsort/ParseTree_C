@@ -6,14 +6,17 @@
 
 #include "token.h"
 
-const std::string START = "S";
+const std::string START = "program";
 const std::string BLOCK = "block";
 const std::string VARS = "vars";
 const std::string EXPR = "exp";
 const std::string HASH = "H";
+const std::string A_LETTER = "A";
 const std::string R_LETTER = "R";
+const std::string M_LETTER = "M";
+const std::string N_LETTER = "N";
 const std::string STATS = "stats";
-const std::string M_STAT = "m_stat";
+const std::string M_STAT = "mStat";
 const std::string STAT = "stat";
 const std::string IN = "in";
 const std::string OUT = "out";
