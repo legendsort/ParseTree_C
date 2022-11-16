@@ -2,6 +2,8 @@
 
 #include "frontend/frontend.h"
 
+//#include "backend/backend.h"
+
 
 void Compiler::compile(std::string filename)
 {
@@ -9,7 +11,8 @@ void Compiler::compile(std::string filename)
     Node* parse_tree = parser.parse();
 
     std::string basename = get_basename(filename);
-    
+//    Backend backend(basename);
+//    backend.traverse(parse_tree);
     Node::destroy(parse_tree);
 }
 

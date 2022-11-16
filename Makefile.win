@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = src/main.o src/compiler/compiler.o src/compiler/backend/backend.o src/compiler/backend/code_generator/code_generator.o src/compiler/backend/optimizer/optimizer.o src/compiler/backend/var_stack/var_stack.o src/compiler/frontend/parser/parser.o src/compiler/frontend/scanner/scanner.o src/compiler/frontend/scanner/state_transition_table/state_transition_table.o src/compiler/frontend/scanner/state_transition_table/table_errors.o src/compiler/node/node.o src/compiler/token/index.o src/compiler/token/delimiter/delimiter_token.o src/compiler/token/end_of_file/end_of_file_token.o src/compiler/token/identifier/identifier_token.o src/compiler/token/integer/integer_token.o src/compiler/token/keyword/keyword_token.o src/compiler/token/operator/operator_token.o src/compiler/token/token_type_id/token_type_id.o
-LINKOBJ  = src/main.o src/compiler/compiler.o src/compiler/backend/backend.o src/compiler/backend/code_generator/code_generator.o src/compiler/backend/optimizer/optimizer.o src/compiler/backend/var_stack/var_stack.o src/compiler/frontend/parser/parser.o src/compiler/frontend/scanner/scanner.o src/compiler/frontend/scanner/state_transition_table/state_transition_table.o src/compiler/frontend/scanner/state_transition_table/table_errors.o src/compiler/node/node.o src/compiler/token/index.o src/compiler/token/delimiter/delimiter_token.o src/compiler/token/end_of_file/end_of_file_token.o src/compiler/token/identifier/identifier_token.o src/compiler/token/integer/integer_token.o src/compiler/token/keyword/keyword_token.o src/compiler/token/operator/operator_token.o src/compiler/token/token_type_id/token_type_id.o
+OBJ      = src/main.o src/compiler/compiler.o src/compiler/backend/backend.o src/compiler/frontend/parser/parser.o src/compiler/frontend/scanner/scanner.o src/compiler/frontend/scanner/state_transition_table/state_transition_table.o src/compiler/frontend/scanner/state_transition_table/table_errors.o src/compiler/node/node.o src/compiler/token/index.o src/compiler/token/delimiter/delimiter_token.o src/compiler/token/end_of_file/end_of_file_token.o src/compiler/token/identifier/identifier_token.o src/compiler/token/integer/integer_token.o src/compiler/token/keyword/keyword_token.o src/compiler/token/operator/operator_token.o src/compiler/token/token_type_id/token_type_id.o
+LINKOBJ  = src/main.o src/compiler/compiler.o src/compiler/backend/backend.o src/compiler/frontend/parser/parser.o src/compiler/frontend/scanner/scanner.o src/compiler/frontend/scanner/state_transition_table/state_transition_table.o src/compiler/frontend/scanner/state_transition_table/table_errors.o src/compiler/node/node.o src/compiler/token/index.o src/compiler/token/delimiter/delimiter_token.o src/compiler/token/end_of_file/end_of_file_token.o src/compiler/token/identifier/identifier_token.o src/compiler/token/integer/integer_token.o src/compiler/token/keyword/keyword_token.o src/compiler/token/operator/operator_token.o src/compiler/token/token_type_id/token_type_id.o
 LIBS     = -L"C:/MinGW/lib" -L"C:/MinGW/x86_64-w64-mingw32/lib" -static-libstdc++ -static-libgcc -std=c++17
 INCS     = -I"C:/MinGW/include" -I"C:/MinGW/x86_64-w64-mingw32/include" -I"C:/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include"
 CXXINCS  = -I"C:/MinGW/include" -I"C:/MinGW/x86_64-w64-mingw32/include" -I"C:/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include"
@@ -32,15 +32,6 @@ src/compiler/compiler.o: src/compiler/compiler.cpp
 
 src/compiler/backend/backend.o: src/compiler/backend/backend.cpp
 	$(CPP) -c src/compiler/backend/backend.cpp -o src/compiler/backend/backend.o $(CXXFLAGS)
-
-src/compiler/backend/code_generator/code_generator.o: src/compiler/backend/code_generator/code_generator.cpp
-	$(CPP) -c src/compiler/backend/code_generator/code_generator.cpp -o src/compiler/backend/code_generator/code_generator.o $(CXXFLAGS)
-
-src/compiler/backend/optimizer/optimizer.o: src/compiler/backend/optimizer/optimizer.cpp
-	$(CPP) -c src/compiler/backend/optimizer/optimizer.cpp -o src/compiler/backend/optimizer/optimizer.o $(CXXFLAGS)
-
-src/compiler/backend/var_stack/var_stack.o: src/compiler/backend/var_stack/var_stack.cpp
-	$(CPP) -c src/compiler/backend/var_stack/var_stack.cpp -o src/compiler/backend/var_stack/var_stack.o $(CXXFLAGS)
 
 src/compiler/frontend/parser/parser.o: src/compiler/frontend/parser/parser.cpp
 	$(CPP) -c src/compiler/frontend/parser/parser.cpp -o src/compiler/frontend/parser/parser.o $(CXXFLAGS)

@@ -8,9 +8,7 @@ using namespace std;
 
 int StateTransitionTable::get_next_state(int current_state, std::string character)
 {
-	cerr<<"++++>"<<current_state<<' '<<character.size()<<' '<<character<<endl;
     int column_index = get_column_index(character);
-    cerr<<"column_index: "<<column_index<<endl;
     return table[current_state][column_index];
 }
 

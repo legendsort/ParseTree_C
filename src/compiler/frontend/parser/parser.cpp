@@ -218,7 +218,6 @@ Node* Parser::stats(int level)
     Node* node = Node::of(STAT, level);
     
 	node->append_child(stat(level));
-    cerr << "=============================================asdasd"<<endl;
 	node->append_child(mStat(level));
     
     return node;
@@ -284,7 +283,6 @@ Node* Parser::stat(int level)
         check_for_semicolon_token();
         return node;
     }
-    cerr<<"--------sdf-sf-sdf-__--not here"<<endl;
     print_error_and_exit();
 }
 
@@ -369,13 +367,11 @@ Node* Parser::ifstat(int level)
                 if (KeywordToken::is_then_token(token)) {
                 	token = scanner -> read();	
 	                node->append_child(stat(level));
-	                cerr<<"------>OKOKOKOK"<<endl;
 	                return node;
                 }
             }
         }
     }
-    cerr<<"+++++++++++++++++++++++++++++++++++++"<<endl;
     print_error_and_exit();
 }
 

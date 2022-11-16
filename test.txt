@@ -1,6 +1,6 @@
 var x : 1 ;
+var y : 2 ;
 begin
-scan x ;
-loop ( x <= 2 ) 
- print ( 1 ) ;
+  scan x ;
+  print ( x ) ;
 end

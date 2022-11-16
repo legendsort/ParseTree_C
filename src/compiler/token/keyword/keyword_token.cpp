@@ -26,7 +26,6 @@ bool KeywordToken::is_keyword(std::string string)
 bool KeywordToken::is_start_token(Token token)
 {
     KeywordToken start_token = KeywordToken(START);
-    cout << start_token.get_value() << ' ' << token.get_value() << endl;
     return token == start_token;
 }
 

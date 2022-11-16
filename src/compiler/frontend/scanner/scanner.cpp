@@ -26,7 +26,6 @@ Scanner::~Scanner()
 void Scanner::check_file(std::ifstream& file, std::string filename)
 {
     if (!file) {
-        std::cerr << "Error: Cannot open file '" << filename << "'.\n";
         exit(1);
     }
 }
@@ -42,7 +41,6 @@ Token Scanner::read()
     int state = 0;
     std::string s = "";
 	s += next_char;
-	cerr<<"new char: "<<(int)next_char<<' '<<next_char<<' '<<state<<endl;
     int next_state = StateTransitionTable::get_next_state(state, s);
     std::string string = "";
     
@@ -50,26 +48,21 @@ Token Scanner::read()
     do {
     	s = "";
 		s += next_char;
-    	cerr<<"new char: "<<(int)next_char<<' '<<next_char<<' '<<state<<endl;
         check_for_eof();
         
         check_for_invalid_character(state);
 
         next_state = StateTransitionTable::get_next_state(state, s);
-		cerr<<"-------->"<<string.size()<<' '<<state<<' '<<next_state<<' ' <<(int)next_char<<endl;
         check_for_table_error(next_state);
         if (StateTransitionTable::is_final_state(next_state)) {
-        	cerr<<"Token: "<<string<<endl;
             return StateTransitionTable::get_token(next_state, string, line_number);
         } else {
             state = next_state;
             if (!isspace(next_char)) {
-//				cerr<<"string added: "<<' '<<state<<endl;
                 string += next_char;
             }
             
         }
-//        cerr<<"======>"<<string.size()<<' '<<state<<' '<<next_state<<' ' <<(int)next_char<<endl;
         if (next_char == '\n') {
             line_number++;
         }
