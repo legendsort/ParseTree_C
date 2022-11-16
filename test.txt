@@ -1,0 +1,6 @@
+var y : 3 ;
+begin
+var x : 12 ;
+scan x ;
+print ( xxxx ++ y ) ;
+end
