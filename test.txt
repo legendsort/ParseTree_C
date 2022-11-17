@@ -1,6 +1,1 @@
-var x : 1 ;
-var y : 2 ;
-begin
-  scan x ;
-  print ( x ) ;
-end
+var x : 1
