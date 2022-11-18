@@ -25,6 +25,7 @@ Node* Parser::parse()
         return root;
     }
     print_error_and_exit();
+    return root;
 }
 
 /**
@@ -48,9 +49,9 @@ Node* Parser::program()
 Node* Parser::block(int level)
 {
     level++;
-    
+    Node *node;
     if (KeywordToken::is_start_token(token)) {
-        Node* node = Node::of(BLOCK, level);
+        node = Node::of(BLOCK, level);
         token = scanner->read();
         node->append_child(vars(level));
         node->append_child(stats(level));
@@ -61,6 +62,7 @@ Node* Parser::block(int level)
     }
     
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -98,6 +100,7 @@ Node* Parser::vars(int level)
     } else {
         return node;
     }
+    return node;
 }
 
 /**
@@ -205,6 +208,7 @@ Node* Parser::R(int level)
         return node;
     }
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -282,6 +286,7 @@ Node* Parser::stat(int level)
         return node;
     }
     print_error_and_exit();
+    return node;
 }
 
 void Parser::check_for_semicolon_token()
@@ -298,11 +303,11 @@ void Parser::check_for_semicolon_token()
  */
 Node* Parser::in(int level)
 {
-	
+    Node *node;
     if (KeywordToken::is_read_token(token)) {
         level++;
         
-        Node* node = Node::of(IN, level);
+        node = Node::of(IN, level);
         
 		token = scanner->read();
         if (token.is_identifier()) {
@@ -314,6 +319,7 @@ Node* Parser::in(int level)
         }
     }
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -322,8 +328,9 @@ Node* Parser::in(int level)
 Node* Parser::out(int level)
 {
     level++;
+    Node *node;
     if (KeywordToken::is_print_token(token)) {
-        Node* node = Node::of(OUT, level);
+        node = Node::of(OUT, level);
         token = scanner->read();
         
         if (DelimiterToken::is_left_parentheses_token(token)) {
@@ -341,7 +348,9 @@ Node* Parser::out(int level)
         	print_error_and_exit();	
         }
     }
+    
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -350,8 +359,9 @@ Node* Parser::out(int level)
 Node* Parser::ifstat(int level)
 {
     level++;
+    Node *node;
     if (KeywordToken::is_if_token(token)) {
-        Node* node = Node::of(IFSTAT, level);
+        node = Node::of(IFSTAT, level);
         token = scanner->read();
         if (DelimiterToken::is_left_parentheses_token(token)) {
             token = scanner->read();
@@ -371,6 +381,7 @@ Node* Parser::ifstat(int level)
         }
     }
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -379,8 +390,9 @@ Node* Parser::ifstat(int level)
 Node* Parser::loop(int level)
 {
     level++;
+    Node *node;
     if (KeywordToken::is_iter_token(token)) {
-        Node* node = Node::of(LOOP, level);
+        node = Node::of(LOOP, level);
         token = scanner->read();
         if (DelimiterToken::is_left_parentheses_token(token)) {
             token = scanner->read();
@@ -395,6 +407,7 @@ Node* Parser::loop(int level)
         }
     }
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -403,8 +416,9 @@ Node* Parser::loop(int level)
 Node* Parser::assign(int level)
 {
     level++;
+    Node *node;
     if (token.is_identifier()) {
-        Node* node = Node::of(ASSIGN, level);
+        node = Node::of(ASSIGN, level);
         token = scanner->read();
         node->append_token(token);
         token = scanner->read();
@@ -416,6 +430,7 @@ Node* Parser::assign(int level)
     }
 
     print_error_and_exit();
+    return node;
 }
 
 /**
@@ -431,6 +446,7 @@ Node* Parser::RO(int level)
         return node;
     }
     print_error_and_exit();
+    return node;
 }
 
 bool Parser::is_RO_token(Token token)

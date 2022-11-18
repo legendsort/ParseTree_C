@@ -71,7 +71,6 @@ Token::Token(TokenTypeId typeId, char value)
 
 void Token::print()
 {
-	printf("----> %s\n", this->get_value());
 }
 bool Token::is_eof()
 {
@@ -85,7 +84,6 @@ bool Token::is_identifier()
 
 bool Token::is_colon()
 {
-	printf("%s", this->typeId);
 	return true;
 }
 
@@ -183,8 +181,8 @@ EndOfFileToken::EndOfFileToken(int line_number)
 
 bool IntegerToken::is_integer(std::string character)
 {
-	if(character.size() == 0) return false;
-	for(int i=0; i<character.size(); i++) if(!isdigit(character[i])) return false;
+	if((int)character.size() == 0) return false;
+	for(int i=0; i<(int)character.size(); i++) if(!isdigit(character[i])) return false;
 	return true;
 }
 
